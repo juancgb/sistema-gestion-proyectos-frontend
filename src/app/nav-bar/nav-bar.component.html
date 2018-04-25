@@ -1,0 +1,22 @@
+<nav class="navbar container">
+  <div class="navbar-brand">
+    <a class="navbar-item" routerLink="/">
+      MI PROYECTO
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start">
+      <a *ngFor="let modulo of modulosDisponibles" class="navbar-item" [routerLink]="[ modulo.link ]"><!-- *ngFor -->
+        <i class="fas {{ modulo.icon }} fa-lg" ></i>
+      </a>
+      <a class="navbar-item" routerLink="/cierresesion">
+        <i class="fas fa-sign-out-alt fa-lg"></i>
+      </a>
+    </div>
+    <div class="navbar-end">
+      <a class="navbar-item">
+        <i class="fas fa-flag fa-lg"></i><!-- internacionalizacion -->
+      </a>
+    </div>
+  </div>
+</nav>
