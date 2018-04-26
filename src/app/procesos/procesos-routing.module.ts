@@ -8,7 +8,7 @@ import { ProcesosListaComponent } from './procesos-lista/procesos-lista.componen
 
 const routes: Routes = [
     { 
-        path:  ProcesosRoutes.procesos.path,
+        path:  '',
         component: ProcesosComponent, 
         children: [
             { path: '', component: ProcesosListaComponent }
