@@ -3,30 +3,22 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { NavBarComponent } from './nav-bar/nav-bar.component';
-/** Paginas */
-import { ProgresoComponent } from './progreso/progreso.component';
-import { ConfiguracionesComponent } from './configuraciones/configuraciones.component';
-import { CierreSesionComponent } from './cierre-sesion/cierre-sesion.component';
+/** Modulos */
+import { AppRoutingModule } from './app-routing.module';
+import { CoreModule } from './core/core.module';
 
-const routes: Routes = [
-  { path: '', redirectTo: '/progreso', pathMatch: 'full' },
-  { path: 'cierresesion', component: CierreSesionComponent },
-  { path: 'progreso', component: ProgresoComponent },
-  { path: 'configuraciones', component: ConfiguracionesComponent }
-];
+/** Paginas */
+import { ProcesosComponent } from './procesos/procesos.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavBarComponent,
-    ProgresoComponent,
-    ConfiguracionesComponent,
-    CierreSesionComponent
+    ProcesosComponent
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes)
+    CoreModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
