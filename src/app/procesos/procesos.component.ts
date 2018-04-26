@@ -1,15 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-procesos',
-  templateUrl: './procesos.component.html',
-  styleUrls: ['./procesos.component.css']
+  templateUrl: './procesos.component.html'
 })
-export class ProcesosComponent implements OnInit {
+export class ProcesosComponent {
 
   constructor() { }
-
-  ngOnInit() {
-  }
 
 }

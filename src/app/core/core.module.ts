@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 /** Views */
-
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { StatusBarComponent } from './status-bar/status-bar.component';
 
 @NgModule({
   imports: [
@@ -12,10 +12,12 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
     RouterModule
   ],
   exports: [
-    NavBarComponent
+    NavBarComponent,
+    StatusBarComponent
   ],
   declarations: [
     NavBarComponent,
+    StatusBarComponent
   ]
 })
 export class CoreModule { }

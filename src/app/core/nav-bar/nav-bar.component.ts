@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 /** Views */
 import { BasicRoutes } from '../../basics/routes';
+import { ProcesosRoutes } from '../../procesos/routes';
 
 @Component({
   selector: 'app-nav-bar',
@@ -16,7 +17,7 @@ export class NavBarComponent implements OnInit {
   ngOnInit() {
     this.componentesDisponibles = [
       { path: BasicRoutes.configuraciones.path, icon: BasicRoutes.configuraciones.icon },
-      { path: 'procesos', icon: 'fa-chart-line' },
+      { path: ProcesosRoutes.procesos.path, icon: ProcesosRoutes.procesos.icon },
       { path: BasicRoutes.cierre_sesion.path, icon: BasicRoutes.cierre_sesion.icon }
     ];
   }

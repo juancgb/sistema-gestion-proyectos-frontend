@@ -6,18 +6,16 @@ import { AppComponent } from './app.component';
 /** Modulos */
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
-
-/** Paginas */
-import { ProcesosComponent } from './procesos/procesos.component';
+import { BasicsModule } from './basics/basics.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    ProcesosComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     CoreModule,
+    BasicsModule,
     AppRoutingModule
   ],
   providers: [],
