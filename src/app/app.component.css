@@ -6,8 +6,3 @@
 .sub-container {
     padding-top: 10px;
 }
-
-#univalle-logo {
-    background-color: red;
-    mask-image: url('../assets/img/univalle-logo.svg');
-}

@@ -11,3 +11,11 @@ body {
     align-items: center !important;
     justify-content: center !important;
 }
+
+.is-full-width-element {
+    width: 100%;
+}
+
+tr td {
+    cursor: pointer;
+}

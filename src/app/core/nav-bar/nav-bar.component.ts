@@ -16,9 +16,9 @@ export class NavBarComponent implements OnInit {
 
   ngOnInit() {
     this.componentesDisponibles = [
-      { path: BasicRoutes.configuraciones.path, icon: BasicRoutes.configuraciones.icon },
-      { path: ProcesosRoutes.procesos.path, icon: ProcesosRoutes.procesos.icon },
-      { path: BasicRoutes.cierre_sesion.path, icon: BasicRoutes.cierre_sesion.icon }
+      { path: BasicRoutes.configuraciones.path, icon: BasicRoutes.configuraciones.icon, title: 'Configuraciones' },
+      { path: ProcesosRoutes.procesos.path, icon: ProcesosRoutes.procesos.icon, title: 'Procesos' },
+      { path: BasicRoutes.cierre_sesion.path, icon: BasicRoutes.cierre_sesion.icon, title: 'Cerrar sesion' }
     ];
   }
 
