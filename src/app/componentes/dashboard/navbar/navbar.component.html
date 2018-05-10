@@ -1,5 +1,10 @@
-<div class="ui top fixed menu">
-  <a class="item" data-content="Features">Features</a>
-  <a class="item">Testimonials</a>
-  <a class="item">Sign-in</a>
+<div class="pure-menu pure-menu-horizontal">
+    <a class="pure-menu-link pure-menu-heading" [routerLink]="['inicio']">
+        <i class="fas fa-home"></i>
+    </a>
+    <ul class="pure-menu-list">
+        <li class="pure-menu-item" [routerLink]="['usuarios']">
+          <a class="pure-menu-link"><i class="fas fa-user"></i></a>  
+        </li>
+    </ul>
 </div>

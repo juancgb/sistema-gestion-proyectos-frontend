@@ -1,3 +1,7 @@
-.contenedor-bajo-header {
-    margin-top: 50px;
+.pure-menu-list {
+    float: right;
+}
+
+.custom-container {
+    margin: 0 2rem 0 2rem;
 }

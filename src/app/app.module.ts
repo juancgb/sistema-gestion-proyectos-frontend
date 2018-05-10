@@ -6,11 +6,13 @@ import { AppRouterModule } from './modulos/router/router.module';
 import { ComponentesModule } from './modulos/componentes/componentes.module';
 
 import { NavbarComponent } from './componentes/dashboard/navbar/navbar.component';
+import { FootbarComponent } from './componentes/dashboard/footbar/footbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent
+    NavbarComponent,
+    FootbarComponent
   ],
   imports: [
     BrowserModule,
