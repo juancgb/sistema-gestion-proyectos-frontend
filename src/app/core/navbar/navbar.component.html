@@ -1,3 +1,7 @@
-<p>
-  navbar works!
-</p>
+<div class="pure-menu pure-menu-horizontal">
+  <ul class="pure-menu-list">
+    <li *ngFor="let route of routes" class="pure-menu-item pure-menu-selected">
+      <i class="pure-menu-link {{ route.icon }}"></i>
+    </li>
+  </ul>
+</div>

@@ -1,7 +1,10 @@
-.pure-menu-list {
-    float: right;
-}
-
 .custom-container {
     margin: 0 2rem 0 2rem;
+}
+
+.folder {
+    max-height: 12rem;
+}
+.inner-folder {
+    padding: 2em;
 }
