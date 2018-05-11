@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { MainComponent } from './views/main/main.component';
+import { NavbarComponent } from './core/navbar/navbar.component';
 import { RegisterComponent } from './views/register/register.component';
 import { LoginComponent } from './views/login/login.component';
 
@@ -11,8 +12,9 @@ import { LoginComponent } from './views/login/login.component';
   declarations: [
     AppComponent,
     MainComponent,
+    NavbarComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
