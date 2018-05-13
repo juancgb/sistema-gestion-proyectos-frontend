@@ -5,12 +5,11 @@
 .folder {
     max-height: 12rem;
 }
-.inner-folder {
+.box-bordered {
     margin: 1em;
     padding: 1em;
     border: 1px solid #bfbfbf;
     border-radius: 5px;
-    
 }
 
 /* Div Alignment */
