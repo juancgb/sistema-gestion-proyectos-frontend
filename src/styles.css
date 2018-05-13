@@ -6,5 +6,40 @@
     max-height: 12rem;
 }
 .inner-folder {
-    padding: 2em;
+    margin: 1em;
+    padding: 1em;
+    border: 1px solid #bfbfbf;
+    border-radius: 5px;
+    
+}
+
+/* Div Alignment */
+.alignment-container {
+    height: 100%;
+    display: flex;
+}
+.center-v {
+    align-self: center;
+    justify-content: center;
+}
+
+/* Text Alignment */
+.text-center-h {
+    text-align: center;
+}
+.text-left-h {
+    text-align: left;
+}
+.text-right-h {
+    text-align: right;
+}
+
+/* Padding */
+.padding-h-10{
+    padding: 0 10px;
+}
+
+/* Cursor */
+.pointer {
+    cursor: pointer;
 }

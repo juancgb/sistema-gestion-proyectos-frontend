@@ -8,6 +8,7 @@ import { NavbarComponent } from './core/navbar/navbar.component';
 import { RegisterComponent } from './views/register/register.component';
 import { LoginComponent } from './views/login/login.component';
 import { ProcesosComponent } from './views/procesos/procesos.component';
+import { PipesModule } from './pipes/pipes.module';
 
 @NgModule({
   declarations: [
@@ -16,11 +17,12 @@ import { ProcesosComponent } from './views/procesos/procesos.component';
     NavbarComponent,
     RegisterComponent,
     LoginComponent,
-    ProcesosComponent,
+    ProcesosComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    PipesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
