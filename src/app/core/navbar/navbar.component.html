@@ -1,12 +1,22 @@
 <div class="pure-menu pure-menu-horizontal">
   <ul class="pure-menu-list">
-    <li *ngFor="let route of routes" [routerLink]="[route.path]" class="pure-menu-item">
-      <i class="pure-menu-link {{ route.icon }}"></i>
+    <li [routerLink]="[routes.MAIN.path]" class="pure-menu-item">
+      <i class="pure-menu-link {{ routes.MAIN.icon }}"></i>
     </li>
   </ul>
   <ul class="pure-menu-list">
     <li class="pure-menu-item pure-menu-disabled">
       <span>{{ url === 'main' ? 'Inicio' : url | capitalize }}</span>
+    </li>
+  </ul>
+  <ul class="pure-menu-list float-right" *ngIf="!isLogged()">
+    <li class="pure-menu-item" [routerLink]="[routes.LOGIN.path]">
+      <i class="pure-menu-link {{ routes.LOGIN.icon }}"></i>
+    </li>
+  </ul>
+  <ul class="pure-menu-list float-right" *ngIf="isLogged()">
+    <li class="pure-menu-item" (click)="signOut()">
+      <i class="pure-menu-link {{ routes.LOGOFF.icon }}"></i>
     </li>
   </ul>
 </div>

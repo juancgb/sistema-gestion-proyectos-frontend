@@ -12,10 +12,10 @@ export class MainComponent implements OnInit {
 
   ngOnInit() {
     this.routes = [
-      { path: '/procesos', label: 'Procesos', icon: ''},
-      { path: '/programas', label: 'Programas', icon: '' },
-      { path: '/sedes', label: 'Sedes', icon: '' },
-      { path: '/proyectos', label: 'proyectos', icon: '' }
+      { path: '/sedes', label: 'Sedes', icon: 'far fa-building' },
+      { path: '/procesos', label: 'Procesos', icon: 'fas fa-list'},
+      { path: '/programas', label: 'Programas', icon: 'far fa-calendar' },
+      { path: '/proyectos', label: 'Proyectos', icon: 'fas fa-clone' }
     ];
   }
 

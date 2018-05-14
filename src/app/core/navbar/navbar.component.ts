@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,35 +8,40 @@ import { Router, NavigationEnd } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
 
-  private routes: Array<any>;
   public url: string;
+  public routes: any = {
+    MAIN: { path: '', icon: 'fas fa-home' },
+    LOGIN: { path: '/login', icon: 'fas fa-sign-in-alt' },
+    LOGOFF: { path: '', icon: 'fas fa-sign-out-alt' }
+  };
 
   constructor(
-    private router: Router
+    private router: Router,
+    private auth: AuthService
   ) { }
 
   ngOnInit() {
-    this.loadRoutes();
-    this.actualURL();
+    this.actualURL ();
   }
 
-  private loadRoutes() {
-    this.routes = [
-      { path: '', icon: 'fas fa-home' }
-    ];
-  }
-
-  private actualURL() {
+  private actualURL () {
     this.router.events.subscribe((value) => {
-      let navigationEnd = value instanceof NavigationEnd;
+      const navigationEnd = value instanceof NavigationEnd;
       if (navigationEnd) {
-        let fragmentedURL = this.router.url.split('/');
-        this.url = fragmentedURL[1];
-        if(fragmentedURL.length > 1){
-          console.log(fragmentedURL[1]);
+        const fragmentedURL = this.router.url.split('/');
+        if (fragmentedURL.length > 1) {
+          this.url = fragmentedURL[1];
         }
       }
     });
+  }
+
+  public isLogged (): boolean {
+    return localStorage.getItem('user') !== null;
+  }
+
+  public signOut (): void {
+    this.auth.signOff();
   }
 
 }

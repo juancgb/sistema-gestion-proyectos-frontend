@@ -22,6 +22,10 @@
     justify-content: center;
 }
 
+.float-right {
+    float: right;
+}
+
 /* Text Alignment */
 .text-center-h {
     text-align: center;
@@ -41,4 +45,9 @@
 /* Cursor */
 .pointer {
     cursor: pointer;
+}
+
+/** Elementos de un unico uso **/
+#login-container {
+    height: 715px;
 }
