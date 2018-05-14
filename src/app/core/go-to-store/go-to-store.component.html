@@ -1,0 +1,23 @@
+<div class="pure-g">
+  <div class="pure-u-1 alignment-container">
+    <h3 style="width: 100%;" class="center-v text-center-h">
+      Tambien puedes descargar nuestra aplicacion movil desde las tiendas oficiales de tu smartphone
+    </h3>
+  </div>
+
+  <!-- incio ng-repeat modulos -->
+  <div class="pure-u-1 pure-u-sm-1-2 folder pointer" *ngFor="let route of routes" (click)="openLink(route.path)">
+    <div class="box-bordered pointer">
+
+      <div class="pure-g text-center-h">
+
+        <div class="pure-u-1">
+          <i class="{{ route.icon }} fa-5x"></i>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+  <!-- incio ng-repeat modulos -->
+</div>

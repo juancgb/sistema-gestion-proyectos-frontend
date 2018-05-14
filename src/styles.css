@@ -47,6 +47,20 @@
     cursor: pointer;
 }
 
+/* Responsive */
+/* Desktop */
+@media only screen and (max-width: 47em) {
+    .hidden-md-to-down {
+        display: none;
+    }
+}
+/* Tablet o inferior */
+@media only screen and (min-width: 47em) {
+    .hidden-md-to-up {
+        display: none;
+    }
+}
+
 /** Elementos de un unico uso **/
 #login-container {
     height: 715px;

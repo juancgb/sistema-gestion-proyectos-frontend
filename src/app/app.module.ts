@@ -21,6 +21,10 @@ import { LoginComponent } from './views/login/login.component';
 import { ForgotPasswordComponent } from './views/forgot-password/forgot-password.component';
 import { ProcesosComponent } from './views/procesos/procesos.component';
 import { SedesComponent } from './views/sedes/sedes.component';
+import { UsersComponent } from './views/users/users.component';
+import { RolesComponent } from './views/roles/roles.component';
+import { RolesService } from './services/roles/roles.service';
+import { GoToStoreComponent } from './core/go-to-store/go-to-store.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +35,10 @@ import { SedesComponent } from './views/sedes/sedes.component';
     LoginComponent,
     ForgotPasswordComponent,
     ProcesosComponent,
-    SedesComponent
+    RolesComponent,
+    SedesComponent,
+    UsersComponent,
+    GoToStoreComponent
   ],
   imports: [
     BrowserModule,
@@ -45,6 +52,7 @@ import { SedesComponent } from './views/sedes/sedes.component';
     FormBuilder,
     ApiService,
     AuthService,
+    RolesService,
     { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }
   ],
   bootstrap: [AppComponent]

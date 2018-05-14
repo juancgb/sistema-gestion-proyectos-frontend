@@ -11,6 +11,8 @@ import { LoginComponent } from './views/login/login.component';
 import { ForgotPasswordComponent } from './views/forgot-password/forgot-password.component';
 import { SedesComponent } from './views/sedes/sedes.component';
 import { ProcesosComponent } from './views/procesos/procesos.component';
+import { RolesComponent } from './views/roles/roles.component';
+import { UsersComponent } from './views/users/users.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'main', pathMatch: 'full' },
@@ -19,6 +21,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent, canActivate: [IsLoggedGuard] },
   { path: 'forgot', component: ForgotPasswordComponent, canActivate: [IsLoggedGuard] },
   { path: 'sedes', component: SedesComponent, canActivate: [AuthGuard] },
+  { path: 'roles', component: RolesComponent, canActivate: [AuthGuard] },
+  { path: 'usuarios', component: UsersComponent, canActivate: [AuthGuard] },
   { path: 'procesos', component: ProcesosComponent, canActivate: [AuthGuard] }
 ];
 
