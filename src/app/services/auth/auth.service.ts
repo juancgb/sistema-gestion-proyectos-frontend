@@ -21,8 +21,13 @@ export class AuthService {
 
   public signIn (credentials: any) {
     return this.api.post(this.AUTH + '/sign_in', credentials)
-    .subscribe((val: HttpResponse<any>) => {
-      localStorage.setItem('user', JSON.stringify(val['data']));
+    .subscribe((response: HttpResponse<any>) => {
+      localStorage.setItem('user', JSON.stringify(response['body']['data']));
+      if (response['headers']) {
+        response['headers'].keys().map(key => { 
+          localStorage.setItem(key, response['headers'].get(key));
+        });
+      }
       this.router.navigate(['/main']);
     }, (err) => {
       console.log(err);
@@ -32,9 +37,15 @@ export class AuthService {
   }
 
   public signOff () {
-    const credentials = localStorage.getItem('user');
-    localStorage.clear();
-    this.router.navigate(['/login']);
-    return this.api.post(this.AUTH + '/sign_out', credentials);
+    let credentials = null;
+    try {
+      if (localStorage.length > 0 && localStorage.getItem('user')) {
+        credentials = JSON.parse(localStorage.getItem('user'));
+      }
+      return this.api.post(this.AUTH + '/sign_out', credentials);
+    } finally {
+      localStorage.clear();
+      this.router.navigate(['/login']);
+    }
   }
 }
