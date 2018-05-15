@@ -24,7 +24,7 @@ export class AuthService {
     .subscribe((response: HttpResponse<any>) => {
       localStorage.setItem('user', JSON.stringify(response['body']['data']));
       if (response['headers']) {
-        response['headers'].keys().map(key => { 
+        response['headers'].keys().map(key => {
           localStorage.setItem(key, response['headers'].get(key));
         });
       }
