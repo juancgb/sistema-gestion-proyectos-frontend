@@ -11,27 +11,27 @@ export class RolesService {
   ) { }
 
   public index () {
-    this.api.get(this.ROLES);
+    return this.api.get(this.ROLES);
   }
 
   public create (entity: any) {
-    this.api.post(this.ROLES, entity);
+    return this.api.post(this.ROLES, entity);
   }
 
   public show (id: string) {
-    this.api.get(this.ROLES + '/' + id);
+    return this.api.get(this.ROLES + '/' + id);
   }
 
   public updatePatch (id: string, entity: any) {
-    this.api.patch(this.ROLES + '/' + id, entity);
+    return this.api.patch(this.ROLES + '/' + id, entity);
   }
 
   public updatePut (id: string, entity: any) {
-    this.api.put(this.ROLES + '/' + id, entity);
+    return this.api.put(this.ROLES + '/' + id, entity);
   }
 
   public destroy (id: string) {
-    this.api.delete(this.ROLES + '/' + id);
+    return this.api.delete(this.ROLES + '/' + id);
   }
 
 }

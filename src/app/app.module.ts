@@ -25,6 +25,7 @@ import { UsersComponent } from './views/users/users.component';
 import { RolesComponent } from './views/roles/roles.component';
 import { RolesService } from './services/roles/roles.service';
 import { GoToStoreComponent } from './core/go-to-store/go-to-store.component';
+import { SedesService } from './services/sedes/sedes.service';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { GoToStoreComponent } from './core/go-to-store/go-to-store.component';
     ApiService,
     AuthService,
     RolesService,
+    SedesService,
     { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }
   ],
   bootstrap: [AppComponent]

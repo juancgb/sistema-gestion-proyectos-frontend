@@ -11,26 +11,26 @@ export class SedesService {
   ) { }
 
   public index () {
-    this.api.get(this.SEDES);
+    return this.api.get(this.SEDES);
   }
 
   public create (entity: any) {
-    this.api.post(this.SEDES, entity);
+    return this.api.post(this.SEDES, entity);
   }
 
   public show (id: string) {
-    this.api.get(this.SEDES + '/' + id);
+    return this.api.get(this.SEDES + '/' + id);
   }
 
   public updatePatch (id: string, entity: any) {
-    this.api.patch(this.SEDES + '/' + id, entity);
+    return this.api.patch(this.SEDES + '/' + id, entity);
   }
 
   public updatePut (id: string, entity: any) {
-    this.api.put(this.SEDES + '/' + id, entity);
+    return this.api.put(this.SEDES + '/' + id, entity);
   }
 
   public destroy (id: string) {
-    this.api.delete(this.SEDES + '/' + id);
+    return this.api.delete(this.SEDES + '/' + id);
   }
 }
