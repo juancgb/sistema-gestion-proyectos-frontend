@@ -4,6 +4,7 @@ import { ApiService } from '../api/api.service';
 
 /** Services */
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Injectable()
 export class AuthService {
@@ -20,29 +21,39 @@ export class AuthService {
   }
 
   public signIn (credentials: any) {
-    return this.api.post(this.AUTH + '/sign_in', credentials)
-    .subscribe((response: HttpResponse<any>) => {
-      localStorage.setItem('user', JSON.stringify(response['body']['data']));
-      if (response['headers']) {
-        response['headers'].keys().map(key => {
-          localStorage.setItem(key, response['headers'].get(key));
-        });
-      }
-      this.router.navigate(['/main']);
-    }, (err) => {
-      console.log(err);
-    }, () => {
-      console.log('finish');
+    let sub: Subscription;
+    const promise: Promise<any> = new Promise((resolve, reject) => {
+      sub = this.api.post(this.AUTH + '/sign_in', credentials)
+      .subscribe((response: HttpResponse<any>) => {
+        if (response['headers']) {
+          localStorage.setItem('user', JSON.stringify(response['body']['data']));
+          response['headers'].keys().map(key => {
+            localStorage.setItem(key, response['headers'].get(key));
+          });
+          this.router.navigate(['/main']);
+          resolve();
+        }
+      }, (err) => {
+        console.error(err);
+        reject();
+      });
+    });
+    promise.then(value => {
+      sub.unsubscribe();
     });
   }
 
   public signOff () {
-    let credentials = null;
     try {
-      if (localStorage.length > 0 && localStorage.getItem('user')) {
-        credentials = JSON.parse(localStorage.getItem('user'));
-      }
-      return this.api.post(this.AUTH + '/sign_out', credentials);
+      let subs: Subscription;
+      const promise: Promise<any> = new Promise((resolve, reject) => {
+        subs = this.api.delete(this.AUTH + '/sign_out').subscribe((response: HttpResponse<any>) => {
+          console.log(response);
+        });
+      });
+      promise.then(value => {
+        subs.unsubscribe();
+      });
     } finally {
       localStorage.clear();
       this.router.navigate(['/login']);

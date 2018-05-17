@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Endpoints } from '../../constantes/endpoints';
 import { Observable } from 'rxjs';
-import { HttpResponse } from 'selenium-webdriver/http';
+import { Endpoints } from '../../constantes/endpoints';
 
 @Injectable()
 export class ApiService {

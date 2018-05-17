@@ -7,7 +7,7 @@ export class CapitalizePipe implements PipeTransform {
 
   transform(value: string): any {
     let result: string;
-    if(value) {
+    if (value) {
       result = value.replace(/\b\w/g, r => r.toUpperCase());
     }
     return result;
