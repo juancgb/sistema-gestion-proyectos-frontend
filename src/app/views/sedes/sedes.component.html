@@ -1,26 +1,85 @@
-<div class="pure-g box-bordered">
+<div class="pure-g" style="margin-top: 1em;">
+
   <div class="pure-u-1 pure-u-sm-1 pure-u-md-2-3 pure-u-lg-2-3">
-    <table class="pure-table pure-table-horizontal">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Nombre</th>
-          <th>Estado</th>
-        </tr>
-      </thead>
-    
-      <tbody>
-        <tr class="pointer" *ngFor="let sede of sedes" (click)="selectSede(sede)">
-          <td>{{ sede.id }}</td>
-          <td>{{ sede.name }}</td>
-          <td>{{ sede.status }}</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="inner-box">
+      <table style="width: 100%;" class="pure-table pure-table-horizontal">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Nombre</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+      
+        <tbody>
+          <tr class="pointer" *ngFor="let sede of sedes" (click)="selectSede(sede)">
+            <td>{{ sede.id }}</td>
+            <td>{{ sede.name }}</td>
+            <td>{{ sede.status | status }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
+
   <div class="pure-u-1 pure-u-sm-1 pure-u-md-1-3 pure-u-lg-1-3">
-    <p>
-      sedes works!
-    </p>
+    <div class="box-controls">
+      <div class="pure-button-group" role="group">
+        <!-- controls in edit -->
+        <button [hidden]="!inEdit" class="button-success pure-button" (click)="saveEdit()"><i class="far fa-save"></i></button>
+        <!-- controls in selected-->
+        <button [hidden]="!sedeSelected || inEdit" class="pure-button" (click)="enableEdit()"><i class="far fa-edit"></i></button>
+        <button [hidden]="!sedeSelected" class="pure-button" (click)="cancelSelection()"><i class="fas fa-ban"></i></button>
+        <button [hidden]="!sedeSelected || inEdit || inDelete" class="button-error pure-button" (click)="enableDelete()"><i class="far fa-trash-alt"></i></button>
+        <!-- label -->
+        <button class="pure-button" disabled>
+            <span *ngIf="sedeSelected">{{ sedeSelected.name | capitalize }}</span>
+            <span [hidden]="sedeSelected">No item</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="box-content inner-box">
+      <!-- View y Edit -->
+      <div *ngIf="sedeSelected" [hidden]="inDelete">
+        <form class="pure-form pure-form-stacked" style="padding: 1em 0;">
+          <fieldset>
+            <label for="id">Id:</label>
+            <input name="id" type="text" placeholder="Id" style="width: 100%;" 
+              [(ngModel)]="sedeSelected.id"
+              [ngModelOptions]="{standalone: true}"
+              [disabled]="true">
+  
+            <label for="name">Name:</label>
+            <input id="name" type="text" placeholder="Name" style="width: 100%;"
+              [(ngModel)]="sedeSelected.name"
+              [ngModelOptions]="{standalone: true}"
+              [disabled]="!inEdit">
+  
+            <label for="remember" class="pure-checkbox">
+              <input id="remember" type="checkbox"
+                [(ngModel)]="sedeSelected.status"
+                [ngModelOptions]="{standalone: true}"
+                [disabled]="!inEdit"> Activado?
+            </label>
+          </fieldset>
+        </form>
+      </div>
+      <!-- No item selected -->
+      <div [hidden]="sedeSelected">
+        <p>
+          Selecciona un item!
+        </p>
+      </div>
+      <!-- Item selected for delete -->
+      <div *ngIf="inDelete">
+        <p>
+          <button class="button-error pure-button" (click)="enableDelete()" style="width: 100%">
+            <i class="far fa-trash-alt"></i>&nbsp;Eliminar {{ sedeSelected.name | capitalize }}
+          </button>
+        </p>
+      </div>
+    </div>
   </div>
+
 </div>

@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+import { HttpResponse } from '@angular/common/http';
+import { Subscription } from 'rxjs';
+
+/** Services */
 import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
@@ -41,7 +45,20 @@ export class NavbarComponent implements OnInit {
   }
 
   public signOut (): void {
-    this.auth.signOff();
+    try {
+      let subs: Subscription;
+      const promise: Promise<any> = new Promise((resolve, reject) => {
+        subs = this.auth.signOff().subscribe((response: HttpResponse<any>) => {
+          console.log(response);
+        });
+      });
+      promise.then(value => {
+        subs.unsubscribe();
+      });
+    } finally {
+      localStorage.clear();
+      this.router.navigate(['/login']);
+    }
   }
 
 }

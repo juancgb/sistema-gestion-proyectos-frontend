@@ -21,42 +21,10 @@ export class AuthService {
   }
 
   public signIn (credentials: any) {
-    let sub: Subscription;
-    const promise: Promise<any> = new Promise((resolve, reject) => {
-      sub = this.api.post(this.AUTH + '/sign_in', credentials)
-      .subscribe((response: HttpResponse<any>) => {
-        if (response['headers']) {
-          localStorage.setItem('user', JSON.stringify(response['body']['data']));
-          response['headers'].keys().map(key => {
-            localStorage.setItem(key, response['headers'].get(key));
-          });
-          this.router.navigate(['/main']);
-          resolve();
-        }
-      }, (err) => {
-        console.error(err);
-        reject();
-      });
-    });
-    promise.then(value => {
-      sub.unsubscribe();
-    });
+    return this.api.post(this.AUTH + '/sign_in', credentials);
   }
 
   public signOff () {
-    try {
-      let subs: Subscription;
-      const promise: Promise<any> = new Promise((resolve, reject) => {
-        subs = this.api.delete(this.AUTH + '/sign_out').subscribe((response: HttpResponse<any>) => {
-          console.log(response);
-        });
-      });
-      promise.then(value => {
-        subs.unsubscribe();
-      });
-    } finally {
-      localStorage.clear();
-      this.router.navigate(['/login']);
-    }
+    return this.api.delete(this.AUTH + '/sign_out');
   }
 }

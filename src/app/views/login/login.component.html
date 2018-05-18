@@ -12,11 +12,19 @@
         <input id="password" type="password" placeholder="Contraseña" style="width: 100%;"  formControlName="password">
   
         <div class="pure-button-group" style="padding-top: .75em; text-align: center">
-          <button class="pure-button pure-button-primary" type="submit" [disabled]="!signInForm.valid">Iniciar sesion</button>
-          <a class="pure-button" [routerLink]="[routes.FORGOT.path]">Olvide mi contraseña</a>
+          <button class="pure-button pure-button-primary" type="submit" [disabled]="!signInForm.valid || logginInProcess">
+            Iniciar sesion&nbsp;
+            
+          </button>
+          <a class="pure-button" [routerLink]="[routes.FORGOT.path]" [hidden]="logginInProcess">
+            Olvide mi contraseña
+          </a>
+          <a class="pure-button" [hidden]="!logginInProcess">
+            <i class="fas fa-spinner fa-pulse"></i>
+          </a>
         </div>
 
-        <div style="padding-top: .75em; text-align: center">
+        <div style="padding-top: .75em; text-align: center" [hidden]="logginInProcess">
           <a [routerLink]="[routes.REGISTER.path]">Resgitrarme</a>
         </div>
       </fieldset>
