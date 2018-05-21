@@ -12,6 +12,9 @@ import { AuthService } from './services/auth/auth.service';
 import { AppRoutingModule } from './app-routing.module';
 import { PipesModule } from './pipes/pipes.module';
 
+/** Services */
+import { RolesService } from './services/roles/roles.service';
+import { SedesService } from './services/sedes/sedes.service';
 /** Components */
 import { AppComponent } from './app.component';
 import { MainComponent } from './views/main/main.component';
@@ -19,13 +22,15 @@ import { NavbarComponent } from './core/navbar/navbar.component';
 import { RegisterComponent } from './views/register/register.component';
 import { LoginComponent } from './views/login/login.component';
 import { ForgotPasswordComponent } from './views/forgot-password/forgot-password.component';
-import { ProcesosComponent } from './views/procesos/procesos.component';
-import { SedesComponent } from './views/sedes/sedes.component';
 import { UsersComponent } from './views/users/users.component';
-import { RolesComponent } from './views/roles/roles.component';
-import { RolesService } from './services/roles/roles.service';
 import { GoToStoreComponent } from './core/go-to-store/go-to-store.component';
-import { SedesService } from './services/sedes/sedes.service';
+import { SedesComponent } from './views/sedes/sedes/sedes.component';
+import { SedeComponent } from './views/sedes/sede/sede.component';
+import { RolesComponent } from './views/sedes/roles/roles.component';
+import { ProcesosComponent } from './views/sedes/procesos/procesos/procesos.component';
+import { ProcesoComponent } from './views/sedes/procesos/proceso/proceso.component';
+import { NivelesComponent } from './views/sedes/procesos/niveles/niveles/niveles.component';
+import { ActividadesComponent } from './views/sedes/procesos/niveles/actividades/actividades.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +44,11 @@ import { SedesService } from './services/sedes/sedes.service';
     RolesComponent,
     SedesComponent,
     UsersComponent,
-    GoToStoreComponent
+    GoToStoreComponent,
+    NivelesComponent,
+    ActividadesComponent,
+    SedeComponent,
+    ProcesoComponent
   ],
   imports: [
     BrowserModule,

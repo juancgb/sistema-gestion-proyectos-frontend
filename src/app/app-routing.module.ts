@@ -9,10 +9,12 @@ import { MainComponent } from './views/main/main.component';
 import { RegisterComponent } from './views/register/register.component';
 import { LoginComponent } from './views/login/login.component';
 import { ForgotPasswordComponent } from './views/forgot-password/forgot-password.component';
-import { SedesComponent } from './views/sedes/sedes.component';
-import { ProcesosComponent } from './views/procesos/procesos.component';
-import { RolesComponent } from './views/roles/roles.component';
 import { UsersComponent } from './views/users/users.component';
+import { SedesComponent } from './views/sedes/sedes/sedes.component';
+import { SedeComponent } from './views/sedes/sede/sede.component';
+import { RolesComponent } from './views/sedes/roles/roles.component';
+import { ProcesosComponent } from './views/sedes/procesos/procesos/procesos.component';
+import { ProcesoComponent } from './views/sedes/procesos/proceso/proceso.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'main', pathMatch: 'full' },
@@ -20,10 +22,16 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent, canActivate: [IsLoggedGuard] },
   { path: 'login', component: LoginComponent, canActivate: [IsLoggedGuard] },
   { path: 'forgot', component: ForgotPasswordComponent, canActivate: [IsLoggedGuard] },
-  { path: 'sedes', component: SedesComponent, canActivate: [AuthGuard] },
-  { path: 'roles', component: RolesComponent, canActivate: [AuthGuard] },
   { path: 'usuarios', component: UsersComponent, canActivate: [AuthGuard] },
-  { path: 'procesos', component: ProcesosComponent, canActivate: [AuthGuard] }
+  { path: 'sedes', children: [
+    { path: '', component: SedesComponent, canActivate: [AuthGuard] },
+    { path: ':sedeId', component: SedeComponent, canActivate: [AuthGuard] },
+    { path: ':sedeId/roles' , component: RolesComponent, canActivate: [AuthGuard] },
+    { path: ':sedeId/procesos', children: [
+      { path: '', component: ProcesosComponent, canActivate: [AuthGuard] },
+      { path: ':procesoId', component: ProcesoComponent, canActivate: [AuthGuard] },
+    ] }
+  ]},
 ];
 
 @NgModule({
