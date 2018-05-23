@@ -14,7 +14,6 @@
         <div class="pure-button-group" style="padding-top: .75em; text-align: center">
           <button class="pure-button pure-button-primary" type="submit" [disabled]="!signInForm.valid || logginInProcess">
             Iniciar sesion&nbsp;
-            
           </button>
           <a class="pure-button" [routerLink]="[routes.FORGOT.path]" [hidden]="logginInProcess">
             Olvide mi contraseña

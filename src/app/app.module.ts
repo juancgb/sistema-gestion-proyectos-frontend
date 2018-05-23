@@ -15,6 +15,8 @@ import { PipesModule } from './pipes/pipes.module';
 /** Services */
 import { RolesService } from './services/roles/roles.service';
 import { SedesService } from './services/sedes/sedes.service';
+import { ProgramasService } from './services/programas/programas.service';
+import { ProcesosService } from './services/procesos/procesos.service';
 /** Components */
 import { AppComponent } from './app.component';
 import { MainComponent } from './views/main/main.component';
@@ -64,6 +66,8 @@ import { ActividadesComponent } from './views/sedes/procesos/niveles/actividades
     AuthService,
     RolesService,
     SedesService,
+    ProgramasService,
+    ProcesosService,
     { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }
   ],
   bootstrap: [AppComponent]

@@ -1,3 +1,202 @@
-<p>
-  sede works!
-</p>
+<div class="pure-g" style="margin-top: 1em;" *ngIf="sede">
+  <div class="pure-u-1 pure-u-sm-1 pure-u-md-1 pure-u-lg-1">
+    <h1>
+      # {{ sede.id }} - {{ sede.name }}
+      <!-- if -->
+      <div *ngIf="sede.status; then activo else inactivo"></div>
+      <!-- then -->
+      <ng-template #activo>
+        <span class="label success" style="padding-top: 9px !important;">
+          <i class="far fa-check-circle"></i>
+        </span>
+      </ng-template>
+      <!-- else -->
+      <ng-template #inactivo>
+        <span class="label warning" style="padding-top: 9px !important;">
+          <i class="far fa-times-circle"></i>
+        </span>
+      </ng-template>
+    </h1>
+  </div>
+
+  <div class="pure-u-1 pure-u-sm-1 pure-u-md-1-2 pure-u-lg-1-2" style="margin-top: 1em;" *ngIf="programas">
+    <!-- programas inicio -->
+    <div class="inner-box">
+      <h2>
+        Programas de esta sede
+      </h2>
+
+      <!-- form nuevo programa inicio -->
+      <div *ngIf="visualizacionFormPrograma">
+        <form class="pure-form pure-form-stacked box-bordered">
+          <fieldset>
+            <legend>Nuevo programa</legend>
+
+            <label for="Nombre" style="color: #9a9a9a;">Nombre</label>
+            <input id="Nombre" type="text" placeholder="Nombre" style="width: 100%;" [(ngModel)]="formPrograma.name" [ngModelOptions]="{standalone: true}">
+      
+            <label for="status" style="padding-top: .75em;">
+                <input id="status" type="checkbox" [(ngModel)]="formPrograma.status" [ngModelOptions]="{standalone: true}">&nbsp;Estado
+            </label>
+            
+            <div class="pure-button-group" style="padding-top: .95em; text-align: center">
+              <button class="pure-button pure-button-primary" type="button" (click)="guardarPrograma()">
+                Crear programa&nbsp;
+              </button>
+
+              <a class="pure-button" (click)="cancelarPrograma()">
+                Cancelar
+              </a>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+      <!-- form nuevo programa fin -->
+
+      <!-- if inicio -->
+      <div *ngIf="programas.length > 0; then hayprogramas else nohayprogramas"></div>
+      <!-- then -->
+      <ng-template #hayprogramas>
+        <table style="width: 100%;" class="pure-table pure-table-horizontal" *ngIf="programas.length > 0">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Nombre</th>
+              <th>Estado</th>
+              <th>
+                <button class="button-success pure-button button-xsmall" (click)="crearPrograma()">
+                  <i class="far fa-plus-square"></i>
+                </button>
+              </th>
+            </tr>
+          </thead>
+        
+          <tbody>
+            <tr class="pointer" *ngFor="let programa of programas">
+              <td>{{ programa.id }}</td>
+              <td>{{ programa.name }}</td>
+              <td>{{ programa.status | status }}</td>
+              <td>
+                <button class="pure-button button-xsmall"><i class="fas fa-external-link-alt"></i></button>
+                <button class="button-error pure-button button-xsmall"><i class="far fa-trash-alt"></i></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </ng-template>
+      <!-- else -->
+      <ng-template #nohayprogramas>
+        <table style="width: 100%;" class="pure-table pure-table-horizontal" [hidden]="visualizacionFormPrograma">
+          <thead>
+            <tr>
+              <th>Sin programas por el momento</th>
+            </tr>
+          </thead>
+        
+          <tbody>
+            <tr>
+              <td>
+                <button class="button-success pure-button button-xsmall" (click)="crearPrograma()">
+                  Crea un nuevo programa
+                  &nbsp;<i class="fas fa-plus-circle"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </ng-template>
+      <!-- if fin -->
+
+    </div>
+    <!-- programas fin -->
+  </div>
+
+  <div class="pure-u-1 pure-u-sm-1 pure-u-md-1-2 pure-u-lg-1-2" style="margin-top: 1em;" *ngIf="procesos">
+    <!-- procesos inicio -->
+    <h2>
+      Procesos de esta sede
+    </h2>
+
+    <!-- form nuevo programa inicio -->
+    <div *ngIf="visualizacionFormProceso">
+      <form class="pure-form pure-form-stacked box-bordered">
+        <fieldset>
+          <legend>Nuevo proceso</legend>
+
+          <label for="Nombre" style="color: #9a9a9a;">Nombre</label>
+          <input id="Nombre" type="text" placeholder="Nombre" style="width: 100%;" [(ngModel)]="formProceso.name" [ngModelOptions]="{standalone: true}">
+    
+          <select [(ngModel)]="formProceso.career_id" [ngModelOptions]="{standalone: true}">
+            <option *ngFor="let programa of programas" [value]="programa.id">{{ programa.name }}</option>
+          </select>
+
+          <div class="pure-button-group" style="padding-top: .95em; text-align: center">
+            <button class="pure-button pure-button-primary" type="button" (click)="guardarProceso()">
+              Crear proceso&nbsp;
+            </button>
+
+            <a class="pure-button" (click)="cancelarProceso()">
+              Cancelar
+            </a>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+    <!-- form nuevo programa fin -->
+
+    <!-- if inicio -->
+    <div *ngIf="procesos.length > 0; then hayprocesos else nohayprocesos"></div>
+    <!-- then -->
+    <ng-template #hayprocesos>
+      <table style="width: 100%;" class="pure-table pure-table-horizontal" *ngIf="procesos.length > 0">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Nombre</th>
+            <th>Estado</th>
+            <th>
+              <button class="button-success pure-button button-xsmall" (click)="crearProceso()">
+                <i class="far fa-plus-square"></i>
+              </button>
+            </th>
+          </tr>
+        </thead>
+      
+        <tbody>
+          <tr class="pointer" *ngFor="let proceso of procesos">
+            <td>{{ proceso.id }}</td>
+            <td>{{ proceso.name }}</td>
+            <td>{{ proceso.status | status }}</td>
+            <td>
+              <button class="pure-button button-xsmall"><i class="fas fa-external-link-alt"></i></button>
+              <button class="button-error pure-button button-xsmall"><i class="far fa-trash-alt"></i></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </ng-template>
+    <!-- else -->
+    <ng-template #nohayprocesos>
+      <table style="width: 100%;" class="pure-table pure-table-horizontal" [hidden]="visualizacionFormProceso">
+        <thead>
+          <tr>
+            <th>Sin procesos por el momento</th>
+          </tr>
+        </thead>
+      
+        <tbody>
+          <tr>
+            <td>
+              <button class="button-success pure-button button-xsmall" (click)="crearProceso()">
+                Crea un nuevo proceso
+                &nbsp;<i class="fas fa-plus-circle"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </ng-template>
+    <!-- if fin -->
+  </div>
+  <!-- procesos fin -->
+</div>
