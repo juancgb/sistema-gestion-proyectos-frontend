@@ -12,8 +12,8 @@ export class MainComponent implements OnInit {
 
   ngOnInit() {
     this.routes = [
-      { path: '/sedes', label: 'Sedes', icon: 'far fa-building' },
-      { path: '/usuarios', label: 'Usuarios', icon: 'fas fa-users' },
+      { path: '/sedes', label: 'Sedes', icon: 'domain' },
+      { path: '/usuarios', label: 'Usuarios', icon: 'people' },
     ];
   }
 

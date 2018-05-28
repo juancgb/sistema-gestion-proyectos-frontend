@@ -1,0 +1,90 @@
+<h2 mat-dialog-title>Crear nuevo proceso</h2>
+
+<mat-dialog-content>
+
+  <mat-vertical-stepper [linear]="false" #stepper>
+
+    <mat-step [stepControl]="procesoForm">
+      <form [formGroup]="procesoForm" class="md-form">
+        <ng-template matStepLabel>Crea un nuevo proceso</ng-template>
+        <mat-form-field class="md-full-width">
+          <input matInput placeholder="Sede id" formControlName="office_id" required>
+        </mat-form-field>
+        <mat-form-field class="md-full-width">
+          <input matInput placeholder="Programa id" formControlName="career_id" required>
+        </mat-form-field>
+        <mat-form-field class="md-full-width">
+          <input matInput placeholder="Nombre" formControlName="name" required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step [stepControl]="nivelesForm">
+      <form [formGroup]="nivelesForm" class="md-form">
+        <ng-template matStepLabel>Crea un nuevo nivel para este proceso</ng-template>
+        <mat-form-field class="md-full-width">
+          <input matInput placeholder="Proceso" formControlName="project_process_id" required>
+        </mat-form-field>
+        <mat-form-field class="md-full-width">
+          <input matInput placeholder="Estado id" formControlName="project_level_status_id" required>
+        </mat-form-field>
+        <mat-form-field class="md-full-width">
+          <input matInput placeholder="Obligatorio?" formControlName="mandatory" required>
+        </mat-form-field>
+        <mat-form-field class="md-full-width">
+          <input matInput placeholder="Request?" formControlName="request" required>
+        </mat-form-field>
+        <mat-form-field class="md-full-width">
+          <input matInput placeholder="Nombre" formControlName="name" required>
+        </mat-form-field>
+        <mat-form-field class="md-full-width">
+          <input matInput placeholder="Descripcion" formControlName="description" required>
+        </mat-form-field>
+      </form>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+
+    <mat-step [stepControl]="actividadesForm">
+      <form [formGroup]="actividadesForm" class="md-form">
+        <ng-template matStepLabel>Crea un nuevo nivel para este proceso</ng-template>
+        <mat-form-field class="md-full-width">
+          <input matInput placeholder="process_level_id" formControlName="process_level_id" required>
+        </mat-form-field>
+        <mat-form-field class="md-full-width">
+          <input matInput placeholder="project_process_id" formControlName="project_process_id" required>
+        </mat-form-field>
+        <mat-form-field class="md-full-width">
+          <input matInput placeholder="Nombre" formControlName="name" required>
+        </mat-form-field>
+        <mat-form-field class="md-full-width">
+          <input matInput placeholder="Descripcion" formControlName="description" required>
+        </mat-form-field>
+        <mat-form-field class="md-full-width">
+          <input matInput placeholder="Fecha de inicio" formControlName="start_date" required>
+        </mat-form-field>
+        <mat-form-field class="md-full-width">
+          <input matInput placeholder="Fecha de finalizacion" formControlName="end_date" required>
+        </mat-form-field>
+      </form>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>Finalizado</ng-template>
+      ¿Todo esta listo?
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+      </div>
+    </mat-step>
+
+  </mat-vertical-stepper>
+
+</mat-dialog-content>

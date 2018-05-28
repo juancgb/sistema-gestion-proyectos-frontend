@@ -1,152 +1,68 @@
-.custom-container {
-    margin: 0 2rem 0 2rem;
-}
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
-.folder {
-    max-height: 12rem;
-}
-.box-bordered {
-    margin: 1em;
-    padding: 1em;
-    border: 1px solid #bfbfbf;
-}
-
-.box-controls {
-    border: 1px solid #cbcbcb; 
-    border-bottom-width: 0 !important;
-    background-color: #E6E6E6;
-}
-.box-content {
-    border: 1px solid #cbcbcb;
-}
-.inner-box {
-    padding: 0 1em 0 1em;
-}
-
-/* Div Alignment */
-.alignment-container {
-    height: 100%;
-    display: flex;
-}
-.center-v {
-    align-self: center;
-    justify-content: center;
-}
-
-.float-right {
-    float: right;
-}
-
-/* Text Font */
+html,
 body {
-    font-family: Arial,Helvetica,sans-serif
+  margin: 0px !important;
 }
 
-/* Text Alignment */
-.text-center-h {
-    text-align: center;
-}
-.text-left-h {
-    text-align: left;
-}
-.text-right-h {
-    text-align: right;
+.md-spacer {
+  flex: 1 1 auto;
 }
 
-/* Padding */
-.padding-h-10{
-    padding: 0 10px;
+/** Contenedores */
+.md-container {
+  position: relative;
+  padding: 24px;
 }
 
-/* Buttons */
-.button-success,
-.button-error,
-.button-warning,
-.button-secondary {
-    color: white;
+/** Forms */
+.md-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
 }
 
-.button-success {
-    background: rgb(28, 184, 65); /* this is a green */
+.md-full-width {
+  width: 100%;
 }
 
-.button-error {
-    background: rgb(202, 60, 60); /* this is a maroon */
+/** Icons */
+.md-icon {
+  padding: 0 14px;
 }
 
-.button-warning {
-    background: rgb(223, 117, 20); /* this is an orange */
+/** Buttons */
+.button-row {
+  padding: 5px 0px;
 }
 
-.button-secondary {
-    background: rgb(66, 184, 221); /* this is a light blue */
+button.button-spacer,
+a.button-spacer {
+  margin: 0 3px;
 }
 
-.button-xsmall {
-    font-size: 70%;
+/** Table */
+table {
+  width: 100%;
 }
 
-.button-small {
-    font-size: 85%;
+/** Header h1 */
+h1 {
+  font-weight: 400 !important;
 }
 
-.button-large {
-    font-size: 110%;
+/** Cursors */
+.cursor-pointer {
+  cursor: pointer;
 }
 
-.button-xlarge {
-    font-size: 125%;
+/** Card repeat horizontal */
+.card-repeat-horizontal {
+  width: 100%; 
+  margin: 0 10px;
 }
 
-/* Cursor */
-.pointer {
-    cursor: pointer;
-}
-
-/* Labels */
-.label {
-    color: inherit;
-    font: inherit;
-    margin: 0;
-    padding: 4px 6px 1px 6px;
-
-    align-items: flex-start;
-    cursor: default;
-    box-sizing: border-box;
-    border-width: 2px;
-    border-style: groove;
-    border-radius: 3px;
-}
-.label.info{
-    color: #1678c2;
-    border: 1px solid #1678c2;
-}
-.label.success {
-    color: #37af53;
-    background-color: #f2fff5;
-    border: 1px solid #21ba45;
-}
-.label.warning {
-    color: #ab1e1e;
-    background-color: #fff0f0;
-    border: 1px solid #db2828;
-}
-
-/* Responsive */
-/* Desktop */
-@media only screen and (max-width: 47em) {
-    .hidden-md-to-down {
-        display: none;
-    }
-}
-/* Tablet o inferior */
-@media only screen and (min-width: 47em) {
-    .hidden-md-to-up {
-        display: none;
-    }
-}
-
-/** Elementos de un unico uso **/
-#login-container {
-    height: 715px;
+/** Modals */
+mat-dialog-content {
+  display: unset !important;
 }

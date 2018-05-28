@@ -1,35 +1,40 @@
-<div id="login-container" class="pure-g alignment-container">
-  <div class="pure-u-1 pure-u-sm-1-2 pure-u-md-1-2 pure-u-lg-1-3 center-v">
-    <form [formGroup]="signInForm" (ngSubmit)="signIn()" class="pure-form pure-form-stacked box-bordered">
-      <fieldset>
-        <legend>Inicia sesion</legend>
-  
-        <label for="email" style="color: #9a9a9a;">Email</label>
-        <input id="email" type="email" placeholder="Email" style="width: 100%;" formControlName="email">
-        <!-- <span class="pure-form-message">This is a required field.</span> -->
-  
-        <label for="password" style="color: #9a9a9a;">Contraseña</label>
-        <input id="password" type="password" placeholder="Contraseña" style="width: 100%;"  formControlName="password">
-  
-        <div class="pure-button-group" style="padding-top: .75em; text-align: center">
-          <button class="pure-button pure-button-primary" type="submit" [disabled]="!signInForm.valid || logginInProcess">
-            Iniciar sesion&nbsp;
-          </button>
-          <a class="pure-button" [routerLink]="[routes.FORGOT.path]" [hidden]="logginInProcess">
-            Olvide mi contraseña
-          </a>
-          <a class="pure-button" [hidden]="!logginInProcess">
-            <i class="fas fa-spinner fa-pulse"></i>
-          </a>
-        </div>
+<mat-grid-list cols="3" rowHeight="600px">
 
-        <div style="padding-top: .75em; text-align: center" [hidden]="logginInProcess">
-          <a [routerLink]="[routes.REGISTER.path]">Resgitrarme</a>
-        </div>
-      </fieldset>
+  <mat-grid-tile [colspan]="1" [rowspan]="1">
+  </mat-grid-tile>
+
+  <mat-grid-tile [colspan]="1" [rowspan]="1">
+
+    <form [formGroup]="signInForm" (ngSubmit)="signIn()" class="md-form">
+
+      <mat-form-field class="md-full-width">
+        <input matInput type="email" placeholder="Correo electronico" formControlName="email">
+      </mat-form-field>
+
+      <mat-form-field class="md-full-width">
+        <input matInput type="password" placeholder="Contraseña" formControlName="password">
+      </mat-form-field>
+
+      <div class="button-row">
+        <button mat-raised-button color="primary" type="submit" [disabled]="!signInForm.valid || logginInProcess" class="button-spacer">
+          Iniciar sesion&nbsp;
+        </button>
+        <a mat-raised-button [routerLink]="[routes.FORGOT.path]" [disabled]="logginInProcess" class="button-spacer">
+          Olvide mi contraseña&nbsp;
+        </a>
+      </div>
+
+      <div class="button-row">
+        <a mat-raised-button [routerLink]="[routes.REGISTER.path]" [disabled]="logginInProcess" class="button-spacer">
+          Resgitrarme&nbsp;
+        </a>
+      </div>
+      
     </form>
-  </div>
-  <div class="pure-u-1 pure-u-sm-1-2 pure-u-md-1-2 pure-u-lg-2-3 center-v">
-    <h1>Gestion de proyectos</h1>
-  </div>
-</div>
+
+  </mat-grid-tile>
+
+  <mat-grid-tile [colspan]="1" [rowspan]="1">
+  </mat-grid-tile>
+
+</mat-grid-list>

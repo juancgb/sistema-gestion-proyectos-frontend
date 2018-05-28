@@ -3,20 +3,39 @@ import { NgModule } from '@angular/core';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+/** Angular Material Componenets */
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {
+  MatToolbarModule,
+  MatSidenavModule,
+  MatMenuModule,
+  MatCardModule,
+  MatIconModule,
+  MatButtonModule,
+  MatTooltipModule,
+  MatDialogModule,
+  MatStepperModule,
+  MatSnackBarModule,
+  MatGridListModule,
+  MatInputModule,
+  MatListModule,
+  MatTableModule,
+  MatChipsModule,
+  MatCheckboxModule,
+  MatSlideToggleModule
+} from '@angular/material';
 /** Services */
-import { InterceptorService } from './services/interceptor/interceptor.service';
+import { InterceptorResquestService } from './services/interceptor-request/interceptor-request.service';
+import { InterceptorResponseService } from './services/interceptor-response/interceptor-response.service';
 import { ApiService } from './services/api/api.service';
 import { AuthService } from './services/auth/auth.service';
-
-/** Modules */
-import { AppRoutingModule } from './app-routing.module';
-import { PipesModule } from './pipes/pipes.module';
-
-/** Services */
 import { RolesService } from './services/roles/roles.service';
 import { SedesService } from './services/sedes/sedes.service';
 import { ProgramasService } from './services/programas/programas.service';
 import { ProcesosService } from './services/procesos/procesos.service';
+/** Modules */
+import { AppRoutingModule } from './app-routing.module';
+import { PipesModule } from './pipes/pipes.module';
 /** Components */
 import { AppComponent } from './app.component';
 import { MainComponent } from './views/main/main.component';
@@ -28,11 +47,13 @@ import { UsersComponent } from './views/users/users.component';
 import { GoToStoreComponent } from './core/go-to-store/go-to-store.component';
 import { SedesComponent } from './views/sedes/sedes/sedes.component';
 import { SedeComponent } from './views/sedes/sede/sede.component';
-import { RolesComponent } from './views/sedes/roles/roles.component';
-import { ProcesosComponent } from './views/sedes/procesos/procesos/procesos.component';
-import { ProcesoComponent } from './views/sedes/procesos/proceso/proceso.component';
-import { NivelesComponent } from './views/sedes/procesos/niveles/niveles/niveles.component';
-import { ActividadesComponent } from './views/sedes/procesos/niveles/actividades/actividades.component';
+import { ProcesosComponent } from './views/procesos/procesos/procesos.component';
+import { RolesComponent } from './views/roles/roles/roles.component';
+import { NivelesComponent } from './views/niveles/niveles/niveles.component';
+import { ActividadesComponent } from './views/actividades/actividades/actividades.component';
+import { ProcesoComponent } from './views/procesos/proceso/proceso.component';
+import { NewProcesoComponent } from './views/procesos/new-proceso/new-proceso.component';
+import { NewSedeComponent } from './views/sedes/new-sede/new-sede.component';
 
 @NgModule({
   declarations: [
@@ -50,15 +71,39 @@ import { ActividadesComponent } from './views/sedes/procesos/niveles/actividades
     NivelesComponent,
     ActividadesComponent,
     SedeComponent,
-    ProcesoComponent
+    ProcesoComponent,
+    NewProcesoComponent,
+    NewSedeComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule,
+    BrowserAnimationsModule, // Angular Material Modules
+    MatToolbarModule,
+    MatSidenavModule,
+    MatMenuModule,
+    MatCardModule,
+    MatIconModule,
+    MatButtonModule,
+    MatTooltipModule,
+    MatDialogModule,
+    MatStepperModule,
+    MatSnackBarModule,
+    MatGridListModule,
+    MatInputModule,
+    MatListModule,
+    MatTableModule,
+    MatChipsModule,
+    MatCheckboxModule,
+    MatSlideToggleModule,
+    AppRoutingModule, // custom modules
     PipesModule
+  ],
+  entryComponents: [
+    NewSedeComponent,
+    NewProcesoComponent
   ],
   providers: [
     FormBuilder,
@@ -68,7 +113,8 @@ import { ActividadesComponent } from './views/sedes/procesos/niveles/actividades
     SedesService,
     ProgramasService,
     ProcesosService,
-    { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: InterceptorResquestService, multi: true }
+    // { provide: HTTP_INTERCEPTORS, useClass: InterceptorResponseService, multi: false }
   ],
   bootstrap: [AppComponent]
 })

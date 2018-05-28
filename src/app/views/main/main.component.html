@@ -1,27 +1,19 @@
-<div class="pure-g">
-  <!-- incio ng-repeat modulos -->
-  <div class="pure-u-1 pure-u-sm-1 pure-u-md-1-2 pure-u-lg-1-3 folder" *ngFor="let route of routes">
-    <div class="box-bordered pointer" [routerLink]="[route.path]">
+<mat-toolbar>
+  <mat-toolbar-row>
+      <span>Tareas</span>
+  </mat-toolbar-row>
+</mat-toolbar>
 
-      <div class="pure-g">
+<div class="md-container">
 
-        <div class="pure-u-1-3 text-center-h">
-          <i class="{{ route.icon }} fa-5x"></i>
-        </div>
+  <mat-grid-list cols="3" rowHeight="150px">
+    <mat-grid-tile [colspan]="1" [rowspan]="1" *ngFor="let route of routes">
+      <mat-card [routerLink]="[route.path]" class="cursor-pointer card-repeat-horizontal">
+          <span style="float: left; line-height: 26px;">{{ route.label }}</span>
+          <mat-icon style="float: right;">{{ route.icon }}</mat-icon>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
 
-        <div class="pure-u-2-3">
-          <div class="alignment-container">
-            <div class="center-v">
-              <div class="text-left-h padding-h-10">
-                {{ route.label }}
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </div>
-  <!-- incio ng-repeat modulos -->
 </div>
+

@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from '../api/api.service';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class ProcesosService {
 
   private PROCESOS = '/api/v1/project_processes';
@@ -14,6 +12,10 @@ export class ProcesosService {
 
   public index () {
     return this.api.get(this.PROCESOS);
+  }
+
+  public find_by_office (id: string) {
+    return this.api.get(this.PROCESOS + '/find_by_office?office_id=' + id );
   }
 
   public create (entity: any) {

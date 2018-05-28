@@ -10,27 +10,31 @@ export class ProgramasService {
     private api: ApiService
   ) { }
 
-  public indexProgramas () {
+  public index () {
     return this.api.get(this.PROGRAMAS);
   }
 
-  public createPrograma (entity: any) {
+  public find_by_office (id: string) {
+    return this.api.get(this.PROGRAMAS + '/find_by_office?office_id=' + id);
+  }
+
+  public create (entity: any) {
     return this.api.post(this.PROGRAMAS, entity);
   }
 
-  public showProgram (id: string) {
+  public show (id: string) {
     return this.api.get(this.PROGRAMAS + '/' + id);
   }
 
-  public updatePatchProgram (id: string, entity: any) {
+  public updatePatch (id: string, entity: any) {
     return this.api.patch(this.PROGRAMAS + '/' + id, entity);
   }
 
-  public updatePutProgram (id: string, entity: any) {
+  public updatePut (id: string, entity: any) {
     return this.api.put(this.PROGRAMAS + '/' + id, entity);
   }
 
-  public destroyProgram (id: string) {
+  public destroy (id: string) {
     return this.api.delete(this.PROGRAMAS + '/' + id);
   }
 

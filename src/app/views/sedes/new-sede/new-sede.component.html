@@ -1,0 +1,16 @@
+<h2 mat-dialog-title>Crear nueva sede</h2>
+<mat-dialog-content>
+  <form [formGroup]="sedeForm" class="md-form">
+    <mat-form-field class="md-full-width">
+      <input matInput type="text" placeholder="nombre" formControlName="name">
+    </mat-form-field>
+    <mat-slide-toggle formControlName="status">
+      Estado:&nbsp;
+    </mat-slide-toggle>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close (click)="onNoClick ()">Cancelar</button>
+  <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
+  <button mat-button (click)="saveNewSede()">Aceptar</button>
+</mat-dialog-actions>

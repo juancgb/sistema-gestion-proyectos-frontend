@@ -2,7 +2,7 @@ import { HttpRequest, HttpInterceptor, HttpHandler, HttpEvent, HttpResponse } fr
 import { Injectable } from '@angular/core';
 
 @Injectable()
-export class InterceptorService implements HttpInterceptor {
+export class InterceptorResquestService implements HttpInterceptor {
 
   constructor() { }
 
@@ -48,7 +48,7 @@ export class InterceptorService implements HttpInterceptor {
       }
     }
     const result = next.handle(localStorage.getItem('access-token') !== null ? authRequest : request);
-    result.subscribe((event: HttpEvent<any>) => {
+    /* result.subscribe((event: HttpEvent<any>) => {
       if (event instanceof HttpResponse) {
         event['headers'].keys().map(key => {
           if (event['headers'].get(key) !== '') {
@@ -56,7 +56,7 @@ export class InterceptorService implements HttpInterceptor {
           }
         });
       }
-    });
+    }); */
     return result;
   }
 }

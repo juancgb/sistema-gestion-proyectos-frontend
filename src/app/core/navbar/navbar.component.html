@@ -1,22 +1,23 @@
-<div class="pure-menu pure-menu-horizontal">
-  <ul class="pure-menu-list">
-    <li [routerLink]="[routes.MAIN.path]" class="pure-menu-item">
-      <i class="pure-menu-link {{ routes.MAIN.icon }}"></i>
-    </li>
-  </ul>
-  <ul class="pure-menu-list">
-    <li class="pure-menu-item pure-menu-disabled">
-      <span>{{ url === 'main' ? 'Inicio' : url | capitalize }}</span>
-    </li>
-  </ul>
-  <ul class="pure-menu-list float-right" *ngIf="!isLogged()">
-    <li class="pure-menu-item" [routerLink]="[routes.LOGIN.path]">
-      <i class="pure-menu-link {{ routes.LOGIN.icon }}"></i>
-    </li>
-  </ul>
-  <ul class="pure-menu-list float-right" *ngIf="isLogged()">
-    <li class="pure-menu-item" (click)="signOut()">
-      <i class="pure-menu-link {{ routes.LOGOFF.icon }}"></i>
-    </li>
-  </ul>
-</div>
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span [routerLink]="[routes.MAIN.path]" style="cursor: pointer;">Ge Project</span>
+    <span class="md-spacer"></span>
+    
+    <span>{{ url === 'main' ? 'Inicio' : url | capitalize }}</span>
+    <span class="md-spacer"></span>
+
+    <button mat-icon-button *ngIf="!isLogged()" [routerLink]="[routes.LOGIN.path]">
+      <mat-icon aria-label="Cerrar session">perm_identity</mat-icon>
+    </button>
+
+    <button mat-icon-button *ngIf="isLogged()" [matMenuTriggerFor]="menu">
+      <mat-icon>person</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="signOut()">
+        <mat-icon aria-label="Cerrar session">close</mat-icon>
+        <span style="padding-right: 16px;">Cerrar sesion</span>
+      </button>
+    </mat-menu>
+  </mat-toolbar-row>
+</mat-toolbar>

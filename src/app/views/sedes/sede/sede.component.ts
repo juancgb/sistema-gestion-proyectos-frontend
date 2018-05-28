@@ -6,6 +6,8 @@ import { Subscription } from 'rxjs';
 import { SedesService } from '../../../services/sedes/sedes.service';
 import { ProgramasService } from '../../../services/programas/programas.service';
 import { ProcesosService } from '../../../services/procesos/procesos.service';
+import { MatDialog } from '@angular/material';
+import { NewProcesoComponent } from '../../procesos/new-proceso/new-proceso.component';
 
 @Component({
   selector: 'app-sede',
@@ -17,49 +19,23 @@ export class SedeComponent implements OnInit, OnDestroy {
   private sede: any;
   private programas: Array<any>;
   private procesos: Array<any>;
-
-  private visualizacionFormPrograma: boolean;
-  private visualizacionFormProceso: boolean;
-
-  private formPrograma: {
-    name: string,
-    status: boolean
-  };
-  private formProceso: {
-    name: string,
-    career_id: any,
-    office_id: any
-  };
+  private columnasProcesos: Array<string>;
 
   constructor(
     private route: ActivatedRoute,
+    private matDialog: MatDialog,
     private sedeService: SedesService,
-    private programaService: ProgramasService,
-    private procesoService: ProcesosService
-  ) {}
+    private programasService: ProgramasService,
+    private procesosService: ProcesosService
+  ) {
+    this.columnasProcesos = ['id', 'name', 'career', 'actions'];
+  }
 
   ngOnInit () {
-    this.visualizacionFormPrograma = false;
-    this.visualizacionFormProceso = false;
     this.inicializacionVariableSede();
   }
 
   ngOnDestroy () {
-  }
-
-  private buildFormPrograma () {
-    this.formPrograma = {
-      name: '',
-      status: false
-    };
-  }
-
-  private buildFormProceso () {
-    this.formProceso = {
-      name: '',
-      career_id: '',
-      office_id: this.sedeId
-    };
   }
 
   private inicializacionVariableSede () {
@@ -74,8 +50,7 @@ export class SedeComponent implements OnInit, OnDestroy {
     }).then(val => {
       subs.unsubscribe();
       this.loadSede(this.sedeId);
-      this.loadProgramas();
-      this.loadProcesos();
+      this.loadPorcesosPorSede(this.sedeId);
     }).catch(err => {
       subs.unsubscribe();
       console.error(err);
@@ -98,104 +73,42 @@ export class SedeComponent implements OnInit, OnDestroy {
     });
   }
 
-  private loadProgramas () {
+  private loadProgramasPorSede (id: string) {
     let subs: Subscription;
     new Promise((resolve, reject) => {
-      subs = this.programaService.indexProgramas().subscribe((response: HttpResponse<any>) => {
+      subs = this.programasService.find_by_office(id).subscribe((response: HttpResponse<any>) => {
         this.programas = response['body'];
         resolve();
       }, err => {
         reject(err);
       });
     }).then(val => {
-      subs.unsubscribe();
+      console.log(this.programas);
     }).catch(err => {
       console.error(err);
     });
   }
 
-  private loadProcesos () {
+  private loadPorcesosPorSede (id: string) {
     let subs: Subscription;
     new Promise((resolve, reject) => {
-      subs = this.procesoService.index().subscribe((response: HttpResponse<any>) => {
+      subs = this.procesosService.find_by_office(id)
+      .subscribe((response: HttpResponse<any>) => {
         this.procesos = response['body'];
         resolve();
       }, err => {
         reject(err);
       });
     }).then(val => {
-      subs.unsubscribe();
     }).catch(err => {
       console.error(err);
     });
   }
 
-  public crearPrograma () {
-    this.visualizacionFormPrograma = true;
-    this.buildFormPrograma();
-  }
-
-  public crearProceso () {
-    this.visualizacionFormProceso = true;
-    this.buildFormProceso();
-  }
-
-  public cancelarPrograma () {
-    this.visualizacionFormPrograma = false;
-  }
-
-  public cancelarProceso () {
-    this.visualizacionFormProceso = false;
-  }
-
-  public guardarPrograma () {
-    let subs: Subscription;
-    new Promise((resolve, reject) => {
-      subs = this.programaService.createPrograma(this.formPrograma).subscribe((response: HttpResponse<any>) => {
-        this.formPrograma = {
-          name: '',
-          status: false
-        };
-        resolve();
-      }, err => {
-        this.formPrograma = {
-          name: '',
-          status: false
-        };
-        reject(err);
-      });
-    }).then(val => {
-      subs.unsubscribe();
-      this.loadProgramas();
-      this.buildFormPrograma();
-      this.cancelarPrograma();
-    }).catch(err => {
-      console.error(err);
-      subs.unsubscribe();
-      this.buildFormPrograma();
-    });
-  }
-
-  public guardarProceso () {
-    let subs: Subscription;
-    new Promise((resolve, reject) => {
-      // tslint:disable-next-line:radix
-      this.formProceso['career_id'] = parseInt(this.formProceso.career_id);
-      subs = this.procesoService.create(this.formProceso).subscribe((response: HttpResponse<any>) => {
-        this.loadProcesos();
-        resolve();
-      }, err => {
-        reject(err);
-      });
-    }).then(val => {
-      subs.unsubscribe();
-      this.loadProcesos();
-      this.buildFormProceso();
-      this.cancelarProceso();
-    }).catch(err => {
-      console.error(err);
-      subs.unsubscribe();
-      this.buildFormProceso();
+  public openNewProceso () {
+    const newProceso = this.matDialog.open(NewProcesoComponent, {
+      width: '700px',
+      maxHeight: '700px'
     });
   }
 }

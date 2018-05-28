@@ -12,9 +12,10 @@ import { ForgotPasswordComponent } from './views/forgot-password/forgot-password
 import { UsersComponent } from './views/users/users.component';
 import { SedesComponent } from './views/sedes/sedes/sedes.component';
 import { SedeComponent } from './views/sedes/sede/sede.component';
-import { RolesComponent } from './views/sedes/roles/roles.component';
-import { ProcesosComponent } from './views/sedes/procesos/procesos/procesos.component';
-import { ProcesoComponent } from './views/sedes/procesos/proceso/proceso.component';
+import { RolesComponent } from './views/roles/roles/roles.component';
+import { ProcesosComponent } from './views/procesos/procesos/procesos.component';
+import { ProcesoComponent } from './views/procesos/proceso/proceso.component';
+
 
 const routes: Routes = [
   { path: '', redirectTo: 'main', pathMatch: 'full' },

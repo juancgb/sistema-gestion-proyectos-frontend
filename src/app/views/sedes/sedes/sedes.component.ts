@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { SedesService } from '../../../services/sedes/sedes.service';
 import { HttpResponse } from '@angular/common/http';
 import { Observable, Subscription } from 'rxjs';
+import { MatDialog } from '@angular/material';
+import { NewSedeComponent } from '../new-sede/new-sede.component';
 
 @Component({
   selector: 'app-sedes',
@@ -10,16 +12,13 @@ import { Observable, Subscription } from 'rxjs';
 export class SedesComponent implements OnInit {
 
   public sedes: Array<any>;
-  public sedeSelected: any;
-  public inEdit: boolean;
-  public inDelete: boolean;
+  public columnas: Array<string>;
 
   constructor(
+    private matDialog: MatDialog,
     private sedesService: SedesService
   ) {
-    this.sedeSelected = null;
-    this.inEdit = false;
-    this.inDelete = false;
+    this.columnas = ['id', 'name', 'status', 'actions'];
   }
 
   ngOnInit() {
@@ -44,6 +43,15 @@ export class SedesComponent implements OnInit {
     }).catch(err => {
       subs.unsubscribe();
       console.error('loadSedes()', err);
+    });
+  }
+
+  public openNewSede () {
+    const newSede = this.matDialog.open(NewSedeComponent, {
+      width: '600px'
+    });
+    newSede.afterClosed().subscribe(result => {
+      this.loadSedes();
     });
   }
 
