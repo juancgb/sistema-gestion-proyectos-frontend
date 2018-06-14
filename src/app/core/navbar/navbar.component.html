@@ -1,9 +1,12 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <span [routerLink]="[routes.MAIN.path]" style="cursor: pointer;">Ge Project</span>
+
+    <button mat-icon-button [routerLink]="[routes.MAIN.path]">
+      <mat-icon aria-label="Inicio">home</mat-icon>
+    </button>
     <span class="md-spacer"></span>
     
-    <span>{{ url === 'main' ? 'Inicio' : url | capitalize }}</span>
+    <span>{{ url === 'main' ? 'Gestión proyectos' : url | capitalize }}</span>
     <span class="md-spacer"></span>
 
     <button mat-icon-button *ngIf="!isLogged()" [routerLink]="[routes.LOGIN.path]">
@@ -19,5 +22,6 @@
         <span style="padding-right: 16px;">Cerrar sesion</span>
       </button>
     </mat-menu>
+
   </mat-toolbar-row>
 </mat-toolbar>

@@ -1,0 +1,9 @@
+<mat-toolbar>
+  <mat-toolbar-row>
+      <div *ngFor='let fragment of url; first as isFirst; last as isLast'>
+        <span *ngIf='!isFirst'>&nbsp;</span>
+        <span [routerLink]="'/' + fragment" style="font-style: italic; cursor: pointer;">{{ fragment | capitalize }}</span>
+        <span *ngIf='!isLast'>&nbsp;/</span>
+      </div>
+  </mat-toolbar-row>
+</mat-toolbar>

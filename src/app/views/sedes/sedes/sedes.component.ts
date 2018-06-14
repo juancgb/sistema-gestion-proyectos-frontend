@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SedesService } from '../../../services/sedes/sedes.service';
 import { HttpResponse } from '@angular/common/http';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material';
 import { NewSedeComponent } from '../new-sede/new-sede.component';
 

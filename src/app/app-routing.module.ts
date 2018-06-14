@@ -15,6 +15,7 @@ import { SedeComponent } from './views/sedes/sede/sede.component';
 import { RolesComponent } from './views/roles/roles/roles.component';
 import { ProcesosComponent } from './views/procesos/procesos/procesos.component';
 import { ProcesoComponent } from './views/procesos/proceso/proceso.component';
+import { ProyectosComponent } from './views/proyectos/proyectos.component';
 
 
 const routes: Routes = [
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent, canActivate: [IsLoggedGuard] },
   { path: 'forgot', component: ForgotPasswordComponent, canActivate: [IsLoggedGuard] },
   { path: 'usuarios', component: UsersComponent, canActivate: [AuthGuard] },
+  { path: 'proyectos', component: ProyectosComponent, canActivate: [AuthGuard] },
   { path: 'sedes', children: [
     { path: '', component: SedesComponent, canActivate: [AuthGuard] },
     { path: ':sedeId', component: SedeComponent, canActivate: [AuthGuard] },

@@ -14,6 +14,7 @@ export class MainComponent implements OnInit {
     this.routes = [
       { path: '/sedes', label: 'Sedes', icon: 'domain' },
       { path: '/usuarios', label: 'Usuarios', icon: 'people' },
+      { path: '/proyectos', label: 'Proyectos', icon: 'library_books' },
     ];
   }
 

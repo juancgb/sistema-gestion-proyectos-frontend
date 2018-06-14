@@ -54,6 +54,8 @@ import { ActividadesComponent } from './views/actividades/actividades/actividade
 import { ProcesoComponent } from './views/procesos/proceso/proceso.component';
 import { NewProcesoComponent } from './views/procesos/new-proceso/new-proceso.component';
 import { NewSedeComponent } from './views/sedes/new-sede/new-sede.component';
+import { ProyectosComponent } from './views/proyectos/proyectos.component';
+import { BreadcrumbComponent } from './core/breadcrumb/breadcrumb.component';
 
 @NgModule({
   declarations: [
@@ -74,6 +76,8 @@ import { NewSedeComponent } from './views/sedes/new-sede/new-sede.component';
     ProcesoComponent,
     NewProcesoComponent,
     NewSedeComponent,
+    ProyectosComponent,
+    BreadcrumbComponent,
   ],
   imports: [
     BrowserModule,
